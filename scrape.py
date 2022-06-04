@@ -17,7 +17,7 @@ for post in reddit.subreddit(subreddit_name).top(limit=10, time_filter="all"):
     url = str(post.url)
     if url.endswith("jpg") or url.endswith("jpeg") or url.endswith("png"):
         filename = post.id + ".jpg"
-        filepath = "dataset" / subreddit_name / filename
+        filepath = f"dataset/{subreddit_name}/{filename}"
         response = requests.get(url)
         img = Image.open(BytesIO(response.content))
         img = img.resize((512, 512), Image.ANTIALIAS)
